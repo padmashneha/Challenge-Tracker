@@ -1,0 +1,140 @@
+body{
+    padding: 7%;
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    /* height: 100vh; */
+    /* overflow: hidden; */
+}
+
+#grid_title { 
+    background-color: black;
+    border-radius: 20px;
+    font-size: 70px;
+    
+    /* height: 30px; */
+    color: beige;
+    text-align: center;
+
+
+}
+.grid_chain {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    background-color: cornflowerblue;
+    border-radius: 50px;
+    max-width: 190vw; /* Ensures it fits within the screen */
+    max-height: 190vh;
+    place-items: center; 
+    /* box-sizing: 50%; */
+    /* margin: auto; */
+    /* width: 50%; */
+    /* gap: 5px 10px; */
+}
+
+.box .tooltip {
+    background-color: black;
+    color: aliceblue;
+    visibility: hidden;
+    text-align: center;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 1;
+}
+.box:hover .tooltip {
+    visibility: visible;
+}
+.box {
+    border: 10px;
+    background-color: antiquewhite;
+    padding: 20px;
+    margin: 25px;
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+
+/* .box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-color: white;
+} */
+
+
+.box::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 120%; /* Place above the box */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.box:hover::after {
+    opacity: 1;
+}
+.box:hover {
+    background-color: lightgrey;
+}
+
+.box.done {
+    background-color: rgba(128,128,128,0.5);
+    /* text-decoration: line-through; */
+    color: black
+}
+
+.box:not(.done)::after {
+    content: "";
+    opacity: 0;
+}
+
+/* Add a cross on top of the number when done */
+
+/* Tooltip styling */
+.box.done::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+
+/* background-color: rgba(0, 0, 0, 0.8); */
+
+
+
+.box.done:hover::after {
+    opacity: 1;
+}
